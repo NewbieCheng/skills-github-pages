@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科技大片 - 未来之战</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            text-align: center;
+            padding: 50px 20px;
+            background: linear-gradient(135deg, #1a1a1a, #000);
+            position: relative;
+            overflow: hidden;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 255, 204, 0.1), transparent);
+            animation: pulse 5s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.1; }
+            100% { transform: scale(1.2); opacity: 0.3; }
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: #00ffcc;
+            text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
+        }
+        header p {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+        .character {
+            background: #1a1a1a;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            width: 600px; /* 增加宽度以适应图片和描述 */
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            display: flex; /* 使用flex布局 */
+            align-items: center; /* 垂直居中对齐 */
+            flex-direction: column; /* 修改为垂直布局 */
+            cursor: pointer; /* 添加鼠标指针效果 */
+        }
+        .character img {
+            width: 256px; /* 设置固定宽度 */
+            height: 256px; /* 设置固定高度 */
+            border-radius: 10px;
+            transition: transform 0.3s;
+            margin-bottom: 20px; /* 修改为下边距 */
+        }
+        .character h2 {
+            font-size: 1.5rem;
+            margin: 15px 0 10px;
+            color: #00ffcc;
+            text-shadow: 0 0 5px #00ffcc;
+        }
+        .character p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+        .full-description {
+            display: none;
+            text-align: left; /* 文字左对齐 */
+            margin-top: 20px; /* 添加上边距 */
+            transition: max-height 0.3s ease-out; /* 添加过渡效果 */
+            overflow: hidden; /* 隐藏溢出内容 */
+            max-height: 0; /* 初始高度为0 */
+        }
+        .character.open .full-description {
+            display: block;
+            max-height: 500px; /* 设置最大高度 */
+        }
+        .character::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 204, 0.2), transparent);
+            transition: left 0.5s;
+        }
+        .character:hover::before {
+            left: 100%;
+        }
+        .character:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 255, 204, 0.5);
+        }
+        .character:hover img {
+            transform: scale(1.1);
+        }
+        .video-container {
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+        }
+        .video-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 255, 204, 0.1), transparent);
+            animation: pulse 5s infinite alternate;
+        }
+        .video-container video {
+            width: 80%;
+            height: 400px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+            transition: box-shadow 0.3s;
+        }
+        .video-container video:hover {
+            box-shadow: 0 0 40px rgba(0, 255, 204, 0.8);
+        }
+        .glow-text {
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc; }
+            100% { text-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 class="glow-text">未来之战</h1>
+        <p>一场跨越时空的史诗对决</p>
+    </header>
+
+    <div class="container">
+        <div class="character" data-video="fxy1.mp4">
+            <img src="role1.png" alt="人物1">
+            <h2>方鑫洋</h2>
+            <p>天才科学家，掌握着改变未来的关键科技。</p>
+            <div class="full-description">
+                <p>背景：方鑫洋是全球顶尖科技公司“未来科技”的CEO，他创办的公司专注于开发前沿科技产品，如人工智能、量子计算和生物技术。在全球危机面前，他决定将公司的资源投入到对抗邪恶势力的战斗中。</p>
+                <p>性格：方鑫洋自信、果断，具有强烈的企业家精神。他善于抓住机遇，敢于冒险。同时，他也非常重视团队合作和员工发展。</p>
+                <p>动机：方鑫洋的目标是推动科技进步，改善人类生活。在《未来之战》中，他相信科技是解决全球性问题的关键。他与主角团队合作，利用自己的科技资源为他们的行动提供支持。</p>
+            </div>
+        </div>
+        <div class="character" data-video="wxw.mp4">
+            <img src="role2.png" alt="人物2">
+            <h2>ChengPP</h2>
+            <p>黑客，能够破解任何系统。</p>
+            <div class="full-description" style="display: none;">
+                <p>背景：ChengPP原名陈佩佩，是一名顶尖的黑客和网络安全专家。她曾是一名地下黑客组织的成员，专门从事网络攻击和信息窃取。然而，在一次偶然的机会中，她被招募加入了一个秘密的反恐组织，负责保护全球关键基础设施的安全。</p>
+                <p>性格：ChengPP聪明、机智，性格独立且有些叛逆。她对权威持怀疑态度，但内心深处有着强烈的正义感。她喜欢挑战权威，常常通过自己的技术手段揭露社会不公。</p>
+                <p>动机：ChengPP的目标是揭露真相，打击腐败和不公。她相信信息自由和透明是社会进步的关键。在《未来之战》中，她的目标是阻止邪恶势力利用网络技术控制全球。</p>
+            </div>
+        </div>
+        <div class="character" data-video="video3.mp4">
+            <img src="character3.jpg" alt="人物3">
+            <h2>段振宇</h2>
+            <p>AI指挥官，掌控着未来的命运。</p>
+            <div class="full-description" style="display: none;">
+                <p>背景：段振宇是一名天才科学家和工程师，他领导了一个顶尖的AI研究团队，开发出了具有高度智能和自主决策能力的AI系统。然而，在一次意外的事故中，AI系统失控，段振宇被迫面对自己创造的“怪物”。他被邪恶势力招募，成为他们的AI指挥官，负责操控AI系统进行全球范围内的战争。</p>
+                <p>性格：段振宇聪明、果断，但内心深处有着强烈的孤独感和对失败的恐惧。他对AI有着复杂的情感，既是创造者，也是囚徒。他被邪恶势力操控，但内心深处仍然渴望自由和救赎。</p>
+                <p>动机：段振宇的目标是控制AI系统，防止其对人类社会造成更大的威胁。然而，在邪恶势力的操控下，他不得不执行他们的命令。在电影中，他逐渐意识到自己的错误，并试图寻找机会摆脱控制。</p>
+            </div>
+        </div>
+        <div class="character" data-video="video4.mp4">
+            <img src="character4.jpg" alt="人物4">
+            <h2>王鑫文</h2>
+            <p>政治家，在全球联合政府中担任重要职务。</p>
+            <div class="full-description" style="display: none;">
+                <p>背景：王鑫文是全球联合政府的首席外交官和战略顾问，在未来世界面临资源枯竭和环境崩溃的危机时，他被推举为全球领袖。他出身于一个政治世家，拥有丰富的政治经验和卓越的领导才能。在全球局势日益紧张的背景下，他致力于通过外交手段和战略联盟来维持世界和平。</p>
+                <p>性格：王鑫文冷静、理智，极具战略眼光。他总是能够在复杂的国际局势中找到最佳解决方案。然而，在面对极端情况时，他也会展现出冷酷无情的一面，为了保护人类的未来，他不惜做出艰难的决定。</p>
+                <p>动机：王鑫文的目标是建立一个和平、公正的世界秩序。他相信，通过强大的领导力和智慧，可以消除战争和贫困，实现全球的可持续发展。在《未来之战》中，他的主要任务是团结各国力量，共同对抗来自外部和内部的威胁。</p>
+            </div>
+        </div>
+        <div class="character" data-video="video5.mp4">
+            <img src="character5.jpg" alt="人物5">
+            <h2>莉娜</h2>
+            <p>时空旅行者，知晓未来的每一个细节。</p>
+            <div class="full-description" style="display: none;">
+                <p>背景：莉娜是一名神秘的时空旅行者，她来自一个遥远的未来世界。在她的世界中，时空旅行技术已经成熟，但她选择回到过去，改变一些关键的历史事件，以防止未来世界的毁灭。</p>
+                <p>性格：莉娜冷静、理智，性格内向且有些神秘。她对时间有着深刻的理解，常常以一种超然的态度查看事物。她对人类情感有着深刻的洞察力，但常常感到孤独和疏离。</p>
+                <p>动机：莉娜的目标是改变历史，拯救未来世界。她相信，通过干预关键的历史事件，可以避免未来的灾难。在《未来之战》中，她与主角团队合作，利用自己的时空旅行能力为他们提供关键信息和支持。</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="video-container">
+        <video controls width="70%" autoplay loop muted>
+            <source src="fxy0.mp4" type="video/mp4">
+            您的浏览器不支持视频标签。
+        </video>
+    </div>
+    
+<script>
+    // 添加鼠标移动特效
+    document.body.addEventListener('mousemove', function(event) {
+        const glow = document.createElement('div');
+        glow.className = 'glow';
+        glow.style.left = `${event.pageX}px`;
+        glow.style.top = `${event.pageY}px`;
+        document.body.appendChild(glow);
+        setTimeout(() => glow.remove(), 500);
+    });
+
+    // 获取所有人物板块元素
+    const characters = document.querySelectorAll('.character');
+
+    // 为每个人物板块添加鼠标悬停事件监听器
+    characters.forEach(character => {
+        let showTimeout, hideTimeout;
+
+        character.addEventListener('mouseenter', () => {
+            // 清除隐藏定时器
+            clearTimeout(hideTimeout);
+
+            // 设置显示定时器
+            showTimeout = setTimeout(() => {
+                const fullDescription = character.querySelector('.full-description');
+                fullDescription.style.display = 'block';
+            }, 100); // 延迟300毫秒显示
+        });
+
+        character.addEventListener('mouseleave', () => {
+            // 清除显示定时器
+            clearTimeout(showTimeout);
+
+            // 设置隐藏定时器
+            hideTimeout = setTimeout(() => {
+                const fullDescription = character.querySelector('.full-description');
+                fullDescription.style.display = 'none';
+            }, 500); // 修改延迟时间为500毫秒隐藏
+        });
+    });
+
+    // 为每个人物板块添加点击事件监听器
+    characters.forEach(character => {
+        character.addEventListener('click', () => {
+            character.classList.toggle('open'); // 切换open类
+        });
+    });
+</script>
+
+    <style>
+        .ripple {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 255, 204, 0.5);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple-effect 1s ease-out;
+        }
+        @keyframes ripple-effect {
+            to {
+                transform: scale(10);
+                opacity: 0;
+            }
+        }
+        .glow {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(0, 255, 204, 0.3);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: glow-effect 0.5s ease-out;
+        }
+        @keyframes glow-effect {
+            to {
+                transform: scale(5);
+                opacity: 0;
+            }
+        }
+
+        /* 居中布局 */
+        footer {
+            text-align: center;
+            font-family: '宋体', sans-serif; /* 将字体修改为宋体 */
+            color: #00ffcc; /* 设置字体颜色为科技感的颜色 */
+            text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc; /* 添加文字阴影效果 */
+        }
+    </style>
+
+    <!-- 添加作者信息和版权声明 -->
+    <footer>
+        <p>作者：ChengPP | 微信：Z503424</p>
+        <p>视频皆由AI创作</p>
+    </footer>
+</body>
+</html>
